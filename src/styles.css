@@ -1,0 +1,491 @@
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: transparent;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Settings window needs scrolling for long folder lists */
+.settings-panel {
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* --- Search window (Mac Spotlight feel) --- */
+.search-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(22, 22, 27, 0.94);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55), 0 4px 16px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  color: #eaeaea;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.search-icon {
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+.search-bar input {
+  flex: 1;
+  font-size: 19px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.search-bar input::placeholder {
+  color: #71717a;
+}
+
+.settings-trigger {
+  background: transparent;
+  border: none;
+  color: #71717a;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.settings-trigger:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* --- Result List --- */
+.result-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Custom modern scrollbar */
+.result-list::-webkit-scrollbar {
+  width: 6px;
+}
+.result-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+.result-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.result-item.active {
+  background: rgba(88, 101, 241, 0.32);
+}
+
+.result-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.result-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-path {
+  font-size: 11px;
+  color: #a1a1aa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.result-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #71717a;
+  min-width: 68px;
+}
+
+.result-time {
+  color: #a1a1aa;
+}
+
+.result-size {
+  color: #71717a;
+}
+
+.result-name mark {
+  background: rgba(250, 204, 21, 0.28);
+  color: #fde047;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* --- File Type Badges --- */
+.ft-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  width: 38px;
+  height: 26px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.ft-doc-pdf {
+  background: rgba(239, 68, 68, 0.22);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+.ft-doc {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.ft-sheet {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.ft-slide {
+  background: rgba(249, 115, 22, 0.2);
+  color: #fdba74;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+}
+
+.ft-image {
+  background: rgba(168, 85, 247, 0.2);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+.ft-audio {
+  background: rgba(236, 72, 153, 0.2);
+  color: #f472b6;
+  border: 1px solid rgba(236, 72, 153, 0.35);
+}
+
+.ft-video {
+  background: rgba(244, 63, 94, 0.2);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.35);
+}
+
+.ft-archive {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.ft-code {
+  background: rgba(6, 182, 212, 0.2);
+  color: #67e8f9;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+}
+
+.ft-exe {
+  background: rgba(100, 116, 139, 0.25);
+  color: #cbd5e1;
+  border: 1px solid rgba(100, 116, 139, 0.4);
+}
+
+.ft-unknown {
+  background: rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* --- Empty state & Footer --- */
+.empty-state {
+  padding: 24px 16px;
+  color: #71717a;
+  font-size: 13px;
+  text-align: center;
+}
+
+.panel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 11px;
+  color: #71717a;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.panel-footer kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: inherit;
+  font-size: 10px;
+  color: #d4d4d8;
+}
+
+/* --- Settings window --- */
+.settings-panel {
+  min-height: 100vh;
+  padding: 24px;
+  background: #18181b;
+  color: #eaeaea;
+}
+
+.settings-panel h1 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.settings-panel section {
+  margin-bottom: 24px;
+}
+
+.settings-panel h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #d4d4d8;
+  margin: 0 0 8px;
+}
+
+.settings-panel .hint {
+  font-size: 12px;
+  color: #71717a;
+  margin: 0 0 10px;
+}
+
+/* Hotkey recorder box */
+.hotkey-box {
+  display: inline-flex;
+  align-items: center;
+  min-width: 200px;
+  min-height: 38px;
+  padding: 6px 14px;
+  background: #27272a;
+  border: 1px dashed #3f3f46;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.hotkey-box:hover {
+  border-color: #6366f1;
+}
+
+.hotkey-box.recording {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.12);
+}
+
+.hotkey-box .recording-label {
+  color: #a5b4fc;
+  font-size: 12px;
+}
+
+.hotkey-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Folder list */
+.folder-list {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.folder-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.folder-path {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  direction: rtl;
+  text-align: left;
+  flex: 1;
+  color: #d4d4d8;
+}
+
+/* Stats */
+.stats-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.stat {
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  padding: 10px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 110px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #71717a;
+  margin-top: 2px;
+}
+
+/* Buttons */
+.settings-panel button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.settings-panel button:hover:not(:disabled) {
+  background: #4338ca;
+}
+
+.settings-panel button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.settings-panel .btn-secondary {
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  color: #d4d4d8;
+}
+
+.settings-panel .btn-secondary:hover {
+  background: #3f3f46;
+}
+
+.settings-panel .btn-icon {
+  background: transparent;
+  border: none;
+  color: #71717a;
+  padding: 4px 8px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.settings-panel .btn-icon:hover {
+  color: #ef4444;
+  background: transparent;
+}
+
+/* Toggle row */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #d4d4d8;
+  cursor: pointer;
+}
+
+.toggle-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: #4f46e5;
+  cursor: pointer;
+}
+
+.settings-panel .actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.settings-panel .status {
+  color: #4ade80;
+  font-size: 13px;
+}
+
+.settings-panel .status.error {
+  color: #f87171;
+}

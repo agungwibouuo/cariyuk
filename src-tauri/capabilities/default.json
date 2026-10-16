@@ -1,0 +1,23 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default capabilities for CariYuk windows",
+  "windows": ["search", "settings"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-set-size",
+    "core:window:allow-set-position",
+    "core:window:allow-set-focus",
+    "core:window:allow-show",
+    "core:window:allow-hide",
+    "opener:default",
+    "dialog:default",
+    "dialog:allow-open",
+    "global-shortcut:allow-register",
+    "global-shortcut:allow-unregister",
+    "global-shortcut:allow-is-registered",
+    "autostart:allow-enable",
+    "autostart:allow-disable",
+    "autostart:allow-is-enabled"
+  ]
+}

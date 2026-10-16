@@ -1,0 +1,53 @@
+[package]
+name = "cariyuk"
+version = "0.1.0"
+description = "CariYuk — fast file search with a quick-access panel, Spotlight-style"
+authors = ["cariyuk"]
+edition = "2024"
+
+[lib]
+name = "cariyuk_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-opener = "2"
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-autostart = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Persistence & index
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+# Directory traversal
+walkdir = "2"
+
+# File watching for incremental index updates
+notify = "6"
+notify-debouncer-full = "0.3"
+
+# Filesystem paths / user dirs
+directories = "5"
+
+# Timestamps & time-based filters
+chrono = "0.4"
+
+# Thiserror for clean error types
+thiserror = "1"
+
+# Parallelism for initial scan
+rayon = "1"
+tauri-plugin-dialog = "2.8.3"
+tauri-plugin-single-instance = "2.5.4"
+
+# Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true
